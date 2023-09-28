@@ -158,55 +158,55 @@ Item {
 
     TelemetryValuesBar {
         id:                 telemetryPanel
-        x:                  recalcXPosition()
+        x:                  (_root.width + telemetryPanel.width)/2 + _toolsMargin//recalcXPosition()
         anchors.margins:    _toolsMargin
 
         // States for custom layout support
-        states: [
-            State {
-                name: "bottom"
-                when: telemetryPanel.bottomMode
+//        states: [
+//            State {
+//                name: "bottom"
+//                when: telemetryPanel.bottomMode
 
-                AnchorChanges {
-                    target: telemetryPanel
-                    anchors.top: undefined
-                    anchors.bottom: parent.bottom
-                    anchors.right: undefined
-                    anchors.verticalCenter: undefined
-                }
+//                AnchorChanges {
+//                    target: telemetryPanel
+//                    anchors.top: undefined
+//                    anchors.bottom: parent.bottom
+//                    anchors.right: undefined
+//                    anchors.verticalCenter: undefined
+//                }
 
-                PropertyChanges {
-                    target: telemetryPanel
-                    x: recalcXPosition()
-                }
-            },
+//                PropertyChanges {
+//                    target: telemetryPanel
+//                    x: recalcXPosition()
+//                }
+//            },
 
-            State {
-                name: "right-video"
-                when: !telemetryPanel.bottomMode && photoVideoControl.visible
+//            State {
+//                name: "right-video"
+//                when: !telemetryPanel.bottomMode && photoVideoControl.visible
 
-                AnchorChanges {
-                    target: telemetryPanel
-                    anchors.top: photoVideoControl.bottom
-                    anchors.bottom: undefined
-                    anchors.right: parent.right
-                    anchors.verticalCenter: undefined
-                }
-            },
+//                AnchorChanges {
+//                    target: telemetryPanel
+//                    anchors.top: photoVideoControl.bottom
+//                    anchors.bottom: undefined
+//                    anchors.right: parent.right
+//                    anchors.verticalCenter: undefined
+//                }
+//            },
 
-            State {
-                name: "right-novideo"
-                when: !telemetryPanel.bottomMode && !photoVideoControl.visible
+//            State {
+//                name: "right-novideo"
+//                when: !telemetryPanel.bottomMode && !photoVideoControl.visible
 
-                AnchorChanges {
-                    target: telemetryPanel
-                    anchors.top: undefined
-                    anchors.bottom: undefined
-                    anchors.right: parent.right
-                    anchors.verticalCenter: parent.verticalCenter
-                }
-            }
-        ]
+//                AnchorChanges {
+//                    target: telemetryPanel
+//                    anchors.top: undefined
+//                    anchors.bottom: undefined
+//                    anchors.right: parent.right
+//                    anchors.verticalCenter: parent.verticalCenter
+//                }
+//            }
+//        ]
 
         function recalcXPosition() {
             // First try centered
@@ -220,7 +220,7 @@ Item {
             } else {
                 // Anchor to left edge
                 return parentToolInsets.leftEdgeBottomInset + _toolsMargin
-            }
+            } //(_root.width + telemetryPanel.width)/2 + _toolsMargin
         }
     }
 
